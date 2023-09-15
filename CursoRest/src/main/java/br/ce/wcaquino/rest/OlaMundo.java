@@ -8,6 +8,8 @@ public class OlaMundo {
 
 	public static void main(String[] args) {
 		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");
+		//Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me:80/ola");
+		//Response response = RestAssured.request(Method.GET, "http://50.116.38.228:80/ola");
 		System.out.println(response.getBody().asString());
 	}
 
