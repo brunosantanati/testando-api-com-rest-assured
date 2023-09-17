@@ -33,3 +33,21 @@ Response:
   "salary": 2500
 }
 ```
+
+https://restapi.wcaquino.me/users/3  
+Response:  
+```JSON
+{
+  "id": 3,
+  "name": "Ana Júlia",
+  "age": 20,
+  "filhos": [
+    {
+      "name": "Zezinho"
+    },
+    {
+      "name": "Luizinho"
+    }
+  ]
+}
+```

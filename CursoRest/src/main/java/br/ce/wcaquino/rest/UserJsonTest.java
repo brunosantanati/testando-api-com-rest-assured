@@ -1,9 +1,7 @@
 package br.ce.wcaquino.rest;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -53,6 +51,21 @@ public class UserJsonTest {
 			.statusCode(200)
 			.body("name", containsString("Joaquina"))
 			.body("endereco.rua", is("Rua dos bobos"));
+	}
+	
+	@Test
+	public void deveriaVerificarLista() {
+		given()
+		.when()
+			.get("http://restapi.wcaquino.me/users/3")
+		.then()
+			.statusCode(200)
+			.body("name", containsString("Ana"))
+			.body("filhos", hasSize(2))
+			.body("filhos[0].name", is("Zezinho"))
+			.body("filhos[1].name", is("Luizinho"))
+			.body("filhos.name", hasItem("Zezinho"))
+			.body("filhos.name", hasItems("Zezinho", "Luizinho"));
 	}
 
 }
