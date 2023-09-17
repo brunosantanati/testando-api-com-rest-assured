@@ -51,3 +51,11 @@ Response:
   ]
 }
 ```
+
+http://restapi.wcaquino.me/users/4  
+Response:  
+```JSON
+{
+  "error": "Usuário inexistente"
+}
+```
