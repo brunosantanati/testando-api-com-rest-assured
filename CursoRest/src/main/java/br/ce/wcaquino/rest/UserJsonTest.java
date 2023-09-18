@@ -1,8 +1,20 @@
 package br.ce.wcaquino.rest;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.arrayContaining;
+import static org.hamcrest.Matchers.arrayWithSize;
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThan;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Assert;
@@ -119,5 +131,20 @@ public class UserJsonTest {
 			.body("salary.min()", is(1234.5678f))
 			.body("salary.findAll{it != null}.sum()", is(closeTo(3734.5678f, 0.001)))
 			.body("salary.findAll{it != null}.sum()", allOf(greaterThan(3000d), lessThan(5000d)));
+	}
+	
+	@Test
+	public void devoUnirJsonPathComJAVA() {
+		ArrayList<String> names = 
+			given()
+			.when()
+				.get("http://restapi.wcaquino.me/users")
+			.then()
+				.statusCode(200)
+				.extract().path("name.findAll{it.startsWith('Maria')}");
+		
+		Assert.assertEquals(1, names.size());
+		Assert.assertTrue(names.get(0).equalsIgnoreCase("mArIa Joaquina"));
+		Assert.assertEquals("maria joaquina".toUpperCase(), names.get(0).toUpperCase());
 	}
 }
