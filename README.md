@@ -59,3 +59,39 @@ Response:
   "error": "Usuário inexistente"
 }
 ```
+
+http://restapi.wcaquino.me/users  
+Response:  
+```JSON
+[
+  {
+    "id": 1,
+    "name": "João da Silva",
+    "age": 30,
+    "salary": 1234.5678
+  },
+  {
+    "id": 2,
+    "name": "Maria Joaquina",
+    "endereco": {
+      "rua": "Rua dos bobos",
+      "numero": 0
+    },
+    "age": 25,
+    "salary": 2500
+  },
+  {
+    "id": 3,
+    "name": "Ana Júlia",
+    "age": 20,
+    "filhos": [
+      {
+        "name": "Zezinho"
+      },
+      {
+        "name": "Luizinho"
+      }
+    ]
+  }
+]
+```
