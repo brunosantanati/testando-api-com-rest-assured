@@ -123,3 +123,15 @@ Response:
   </user>
 </users>
 ```
+https://restapi.wcaquino.me/usersXML/3  
+Response:  
+```xml
+<user id="3">
+  <name>Ana Julia</name>
+  <age>20</age>
+  <filhos>
+    <name>Zezinho</name>
+    <name>Luizinho</name>
+  </filhos>
+</user>
+```
