@@ -135,3 +135,5 @@ Response:
   </filhos>
 </user>
 ```
+https://restapi.wcaquino.me/v2/users  
+HTML content (not JSON or XML)  
