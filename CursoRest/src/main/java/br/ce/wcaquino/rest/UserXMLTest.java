@@ -34,17 +34,20 @@ public class UserXMLTest {
 		ResponseSpecBuilder resBuilder = new ResponseSpecBuilder();
 		resBuilder.expectStatusCode(200);
 		resSpec = resBuilder.build();
+
+		RestAssured.requestSpecification = reqSpec;
+		RestAssured.responseSpecification = resSpec;
 	}
 
 	@Test
 	public void devoTrabalharComXML() {
 		given()
-			.spec(reqSpec)
+			//.spec(reqSpec)
 		.when()
 			.get("/usersXML/3")
 		.then()
 			//.statusCode(200)
-			.spec(resSpec)
+			//.spec(resSpec)
 			.body("user.name", is("Ana Julia"))
 			.body("user.@id", is("3"))
 			.body("user.filhos.name.size()", is(2))
@@ -79,12 +82,12 @@ public class UserXMLTest {
 	@Test
 	public void devoFazerPesquisasAvancadasComXML() {
 		given()
-			.spec(reqSpec)
+			//.spec(reqSpec)
 		.when()
 			.get("/usersXML")
 		.then()
 			//.statusCode(200)
-			.spec(resSpec)
+			//.spec(resSpec)
 			.body("users.user.size()", is(3))
 			.body("users.user.findAll{it.age.toInteger() <= 25}.size()", is(2))
 			.body("users.user.@id", hasItems("1", "2", "3"))
@@ -101,7 +104,7 @@ public class UserXMLTest {
 				.when()
 					.get("/usersXML")
 				.then()
-					.statusCode(200)
+					//.statusCode(200)
 					.extract().path("users.user.name.findAll{it.toString().contains('n')}");
 
 		Assert.assertEquals(2, nomes.size());
@@ -115,7 +118,7 @@ public class UserXMLTest {
 		.when()
 			.get("/usersXML")
 		.then()
-			.statusCode(200)
+			//.statusCode(200)
 			.body(hasXPath("count(/users/user)", is("3")))
 			.body(hasXPath("/users/user[@id = '1']"))
 			.body(hasXPath("//user[@id = '2']"))
