@@ -95,6 +95,15 @@ Response:
   }
 ]
 ```
+POST http://restapi.wcaquino.me/users  
+Response:
+```JSON
+{
+    "name": "Jose",
+    "age": 50,
+    "id": 1699973036876
+}
+```
 https://restapi.wcaquino.me/usersXML  
 Response:  
 ```xml
