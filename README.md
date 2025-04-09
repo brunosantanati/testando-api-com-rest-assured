@@ -146,3 +146,68 @@ Response:
 ```
 https://restapi.wcaquino.me/v2/users  
 HTML content (not JSON or XML)  
+
+https://restapi.wcaquino.me/v2/users?format=json  
+Response:  
+```JSON
+[
+  {
+    "id": 1,
+    "name": "João da Silva",
+    "age": 30,
+    "salary": 1234.5678
+  },
+  {
+    "id": 2,
+    "name": "Maria Joaquina",
+    "endereco": {
+      "rua": "Rua dos bobos",
+      "numero": 0
+    },
+    "age": 25,
+    "salary": 2500
+  },
+  {
+    "id": 3,
+    "name": "Ana Júlia",
+    "age": 20,
+    "filhos": [
+      {
+        "name": "Zezinho"
+      },
+      {
+        "name": "Luizinho"
+      }
+    ]
+  }
+]
+```
+
+https://restapi.wcaquino.me/v2/users?format=xml  
+Response:  
+```xml
+<users>
+  <user id="1">
+    <name>João da Silva</name>
+    <age>30</age>
+    <salary>1234.5678</salary>
+  </user>
+  <user id="2">
+    <name>Maria Joaquina</name>
+    <age>25</age>
+    <salary>2500</salary>
+    <endereco>
+      <rua>Rua dos bobos</rua>
+      <numero>0</numero>
+    </endereco>
+  </user>
+  <user id="3">
+    <name>Ana Julia</name>
+    <age>20</age>
+    <filhos>
+      <name>Zezinho</name>
+      <name>Luizinho</name>
+    </filhos>
+  </user>
+</users>
+```
